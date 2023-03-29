@@ -46,6 +46,10 @@ header {
     gap: 16px;
 }
 
+.container>div>div:hover {
+    cursor: pointer;
+}
+
 .container h2 {
     margin-top: 27px;
     margin-bottom: 17px;
@@ -125,4 +129,8 @@ header {
 .checkout button h3 {
     width: 60%;
     margin: 8px auto;
+}
+
+.checkout button:hover {
+    cursor: pointer;
 }
