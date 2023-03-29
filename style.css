@@ -30,6 +30,8 @@ header {
     margin: auto;
 
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    z-index: 10;
 }
 
 .container {
@@ -68,6 +70,8 @@ header {
 
     box-shadow: 0px 0px 10px -4px rgba(0, 0, 0, 0.25);
     border-radius: 9px;
+
+    position: relative;
 }
 
 .container>div>div img {
@@ -90,7 +94,7 @@ header {
 
 
 
-.checkout {
+#btn-finish {
     display: flex;
     justify-content: center;
 
@@ -103,15 +107,16 @@ header {
     margin: auto;
 
     background-color: #E5E5E5;
+
+    z-index: 10;
 }
 
-.checkout button {  
+#checkout {  
     width: 364px;
     height: 61px;
 
     margin: 15px auto;
-
-    background: #CBCBCB;
+    
     border-radius: 50px;
 
     font-family: 'Roboto';
@@ -120,17 +125,51 @@ header {
     font-size: 20px;
     line-height: 23px;
     text-align: center;
-    letter-spacing: 0.018em;
-
-    border: none;
-    color: #FFFFFF;
+    letter-spacing: 0.018em;    
 }
 
-.checkout button h3 {
+#checkout h3 {
     width: 60%;
     margin: 8px auto;
 }
 
-.checkout button:hover {
+#checkout:hover {
     cursor: pointer;
+}
+
+.unavailable {
+    border: none;
+    color: #FFFFFF;
+    background: #CBCBCB;
+}
+
+/* Manipulando o estilo do elemento selecionado: */
+
+.selected {
+    border: 5px solid green;
+    opacity: 0.8;    
+}
+
+.not-visible {
+    display: none;
+}
+
+.visible {
+    display: flex;
+
+    width: 19px;
+    height: 19px;
+
+    position: absolute;
+
+    right: 5px;
+    bottom: 5px;
+
+    color: green;
+    
+    z-index: 5;
+}
+
+.available {
+    background-color: green;
 }
