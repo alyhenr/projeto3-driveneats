@@ -111,12 +111,12 @@ header {
     z-index: 10;
 }
 
-#checkout {  
+#checkout {
     width: 364px;
     height: 61px;
 
     margin: 15px auto;
-    
+
     border-radius: 50px;
 
     font-family: 'Roboto';
@@ -125,7 +125,7 @@ header {
     font-size: 20px;
     line-height: 23px;
     text-align: center;
-    letter-spacing: 0.018em;    
+    letter-spacing: 0.018em;
 }
 
 #checkout h3 {
@@ -147,7 +147,7 @@ header {
 
 .selected {
     border: 5px solid green;
-    opacity: 0.8;    
+    opacity: 0.8;
 }
 
 .not-visible {
@@ -166,10 +166,16 @@ header {
     bottom: 5px;
 
     color: green;
-    
+
     z-index: 5;
 }
 
 .available {
     background-color: green;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
 }
