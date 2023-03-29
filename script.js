@@ -26,7 +26,7 @@ const selectOption = (e) => {
         if (divSelecionada.id.includes("meal")) {
           meal = +divSelecionada
             .getElementsByClassName("price")[0]
-            .textContent.replaceAll(",", ".");
+            .textContent.replaceAll(",", ".");      
         } else if (divSelecionada.id.includes("drink")) {
           drink = +divSelecionada
             .getElementsByClassName("price")[0]
@@ -43,6 +43,22 @@ const selectOption = (e) => {
     }
   }
 
+  const orderConfirmation = (e) => {
+    document.getElementsByClassName('container')[0].style.opacity = 0.2;
+    
+    const confirmation = document.getElementById('confirmation');
+    confirmation.classList.remove('not-visible');
+    confirmation.classList.add('confirmation-panel');
+
+    const pricesSelection = [meal, drink, dessert, total.toFixed(2)];
+
+    // Adicionando o valor dos pedidos e o valor total no painel de confirmação:
+    for (let i = 0; i < confirmation.children.length - 3; i++) {
+        confirmation.children[i + 1].getElementsByTagName('span')[0]
+            .textContent = pricesSelection[i].toString().replaceAll(".", ",");
+    }
+  }
+
   // Se as 3 opções forem selecionadas, o botão de fechar pedido é liberado:
 
   if ([...document.getElementsByClassName("selected")].length === 3) {
@@ -50,7 +66,9 @@ const selectOption = (e) => {
     const button = document.getElementById("checkout");
     button.classList.add("available");
     button.children[0].textContent = "Fechar Pedido";
-    total = meal + drink + dessert;
+    total = meal + drink + dessert;    
+
+    button.addEventListener('click', (e) => orderConfirmation(e));
   }
 };
 
