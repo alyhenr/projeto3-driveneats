@@ -244,6 +244,10 @@ header {
     color: #FFFFFF;
 }
 
+.confirmation-panel button:hover {
+    cursor: pointer;
+}
+
 #deal {
     width: 310px;
     height: 52px;
