@@ -23,23 +23,33 @@ const selectOption = (e) => {
         // Fazendo o ion-icon de "ok" aparecer:
         divSelecionada.children[2].classList.add("visible");
 
+        // Capturando o preço da opção selecionada (melhorando o commit final e elimando repetições de código):
+        const priceOption = (element) => { 
+
+            return element.getElementsByClassName("price")[0]
+                .textContent.replaceAll(",", "."); 
+        
+        }
+
         // Armazenando o preço da opção:
         if (divSelecionada.id.includes("meal")) {
-          meal = +divSelecionada
-            .getElementsByClassName("price")[0]
-            .textContent.replaceAll(",", ".");      
+
+          meal = +priceOption(divSelecionada);
+
         } else if (divSelecionada.id.includes("drink")) {
-          drink = +divSelecionada
-            .getElementsByClassName("price")[0]
-            .textContent.replaceAll(",", ".");
+
+          drink = +priceOption(divSelecionada);
+
         } else if (divSelecionada.id.includes("dessert")) {
-          dessert = +divSelecionada
-            .getElementsByClassName("price")[0]
-            .textContent.replaceAll(",", ".");
+
+          dessert = +priceOption(divSelecionada);
+
         }
       } else {
+
         divPai.children[i].classList.remove("selected");
         divPai.children[i].children[2].classList.remove("visible");
+        
       }
     }
   }
