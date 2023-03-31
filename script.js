@@ -17,7 +17,7 @@ const orderConfirmation = (e) => {
   e.currentTarget.disabled = true;
 
   // Deixando o body do app com opacidade baixa quando a tela de confirmação é apresentada:
-  document.querySelector(".container").style.opacity = 0.2;
+  document.querySelector(".container").classList.add("low-opacity");
 
   // Armazenando o nome e endereço do usuário para a menssagem no whats:
   let name = "";
@@ -46,10 +46,21 @@ const orderConfirmation = (e) => {
   // Adicionando o valor dos pedidos e o valor total no painel de confirmação:
   const pricesSelection = [meal, drink, dessert, total.toFixed(2)];
 
-  for (let i = 0; i < confirmation.children.length - 3; i++) {
+  // Armazenando os dados das opções (divs) que foram selecionadas:
+  const selectedData = document.getElementsByClassName("selected");
+
+  for (let i = 0; i < confirmation.children.length - 4; i++) {
     confirmation.children[i + 1].getElementsByTagName("span")[0].textContent =
+      selectedData[i].children[1].children[0].textContent;
+
+    confirmation.children[i + 1].getElementsByTagName("span")[1].textContent =
       pricesSelection[i].toString().replaceAll(".", ",");
   }
+
+  // Valor Total:
+  confirmation.children[4].getElementsByTagName(
+    "span"
+  )[0].textContent = `R$ ${pricesSelection[3].toString().replaceAll(".", ",")}`;
 
   // Capturando o botão da finalização do pedido e encaminhamento para o wpp ou cancelamento:
   const finishBtn = document.getElementById("deal");
@@ -59,9 +70,9 @@ const orderConfirmation = (e) => {
   finishBtn.addEventListener("click", () => {
     location.href = `https://wa.me/5542999009040?text=${encodeURIComponent(`
       Olá, gostaria de fazer o pedido:
-      - Prato: Frango Yin Yang
-      - Bebida: Coquinha Gelada
-      - Sobremesa: Pudim
+      - Prato: R$ ${selectedData[0].children[1].children[0].textContent}
+      - Bebida: R$ ${selectedData[1].children[1].children[0].textContent}
+      - Sobremesa: R$ ${selectedData[2].children[1].children[0].textContent}
       Total: R$ ${total.toFixed(2).toString().replaceAll(".", ",")}
       
       Nome: ${name}
@@ -72,7 +83,7 @@ const orderConfirmation = (e) => {
   // Cancelando o pedido e voltando a tela de seleção:
   cancelBtn.addEventListener("click", () => {
     document.getElementById("checkout").disabled = false;
-    document.querySelector(".container").style.opacity = 1;
+    document.querySelector(".container").classList.remove("low-opacity");
     confirmation.classList.add("not-visible");
     confirmation.classList.remove("confirmation-panel");
   });
@@ -156,4 +167,5 @@ const button = document.getElementById("checkout");
 button.addEventListener("click", (e) => orderConfirmation(e));
 
 // Passo 3:
-// Executar as funções adicionadas aos eventos de click, de acordo com o oque o usuario fizer
+// Executar as funções (acima) adicionadas aos eventos de click nas divs,
+// de acordo com o oque o usuario fizer

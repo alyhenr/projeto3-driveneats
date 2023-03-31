@@ -29,7 +29,7 @@
             <div class="meal" data-test="dish"">
                 <img src=" ./projeto__driven-eats__imagens/frango_yin_yang.png" alt="meal">
                 <div class="details">
-                    <h4 data-test="item-name">Frango Yin Yang</h4>
+                    <h4 data-test="item-name">Frango Yin Yang (pequeno)</h4>
                     <p>Um pouco de batata, um pouco de salada</p>
                     <h3>R$ <span data-test="item-price" class="price">14,90</span></h3>
                 </div>
@@ -38,7 +38,7 @@
             <div class="meal" data-test="dish"">
                 <img src=" ./projeto__driven-eats__imagens/frango_yin_yang.png" alt="meal">
                 <div class="details">
-                    <h4 data-test="item-name">Frango Yin Yang</h4>
+                    <h4 data-test="item-name">Frango Yin Yang (médio)</h4>
                     <p>Um pouco de batata, um pouco de salada</p>
                     <h3>R$ <span data-test="item-price" class="price">18,90</span></h3>
                 </div>
@@ -47,9 +47,9 @@
             <div class="meal" data-test="dish"">
                 <img src=" ./projeto__driven-eats__imagens/frango_yin_yang.png" alt="meal">
                 <div class="details">
-                    <h4 data-test="item-name">Frango Yin Yang</h4>
+                    <h4 data-test="item-name">Frango Yin Yang (grande)</h4>
                     <p>Um pouco de batata, um pouco de salada</p>
-                    <h3>R$ <span data-test="item-price" class="price">12,90</span></h3>
+                    <h3>R$ <span data-test="item-price" class="price">22,90</span></h3>
                 </div>
                 <ion-icon class="not-visible" name="checkmark-circle"></ion-icon>
             </div>
@@ -60,7 +60,7 @@
             <div class="drink" data-test="drink">
                 <img src="./projeto__driven-eats__imagens/coca-cola.png" alt="drink">
                 <div class="details">
-                    <h4 data-test="item-name">Coquinha gelada</h4>
+                    <h4 data-test="item-name">Coquinha gelada (pequena)</h4>
                     <p>Lata 350ml</p>
                     <h3>R$ <span data-test="item-price" class="price">4,90</span></h3>
                 </div>
@@ -69,7 +69,7 @@
             <div class="drink" data-test="drink">
                 <img src="./projeto__driven-eats__imagens/coca-cola.png" alt="drink">
                 <div class="details">
-                    <h4 data-test="item-name">Coquinha gelada</h4>
+                    <h4 data-test="item-name">Coquinha gelada (média)</h4>
                     <p>Lata 350ml</p>
                     <h3>R$ <span data-test="item-price" class="price">6,90</span></h3>
                 </div>
@@ -78,9 +78,9 @@
             <div class="drink" data-test="drink">
                 <img src="./projeto__driven-eats__imagens/coca-cola.png" alt="drink">
                 <div class="details">
-                    <h4 data-test="item-name">Coquinha gelada</h4>
+                    <h4 data-test="item-name">Coquinha gelada (grande)</h4>
                     <p>Lata 350ml</p>
-                    <h3>R$ <span data-test="item-price" class="price">5,90</span></h3>
+                    <h3>R$ <span data-test="item-price" class="price">8,90</span></h3>
                 </div>
                 <ion-icon class="not-visible" name="checkmark-circle"></ion-icon>
             </div>
@@ -91,7 +91,7 @@
             <div class="dessert" data-test="dessert">
                 <img src="./projeto__driven-eats__imagens/pudim.png" alt="dessert">
                 <div class="details">
-                    <h4 data-test="item-name">Pudim</h4>
+                    <h4 data-test="item-name">Pudim (pequeno)</h4>
                     <p>Apenas pudim</p>
                     <h3>R$ <span data-test="item-price" class="price">7,90</span></h3>
                 </div>
@@ -100,16 +100,16 @@
             <div class="dessert" data-test="dessert">
                 <img src="./projeto__driven-eats__imagens/pudim.png" alt="dessert">
                 <div class="details">
-                    <h4 data-test="item-name">Pudim</h4>
+                    <h4 data-test="item-name">Pudim (médio)</h4>
                     <p>Apenas pudim</p>
-                    <h3>R$ <span data-test="item-price" class="price">12,90</span></h3>
+                    <h3>R$ <span data-test="item-price" class="price">11,90</span></h3>
                 </div>
                 <ion-icon class="not-visible" name="checkmark-circle"></ion-icon>
             </div>
             <div class="dessert" data-test="dessert">
                 <img src="./projeto__driven-eats__imagens/pudim.png" alt="dessert">
                 <div class="details">
-                    <h4 data-test="item-name">Pudim</h4>
+                    <h4 data-test="item-name">Pudim (grande)</h4>
                     <p>Apenas pudim</p>
                     <h3>R$ <span data-test="item-price" class="price">15,90</span></h3>
                 </div>
@@ -124,16 +124,16 @@
     </div>
 
     <!-- Com as opções selecionadas, para finalizar o pedido: -->
-    <div id ="confirmation" class="not-visible" data-test="confirm-order-modal">
+    <div id="confirmation" class="not-visible" data-test="confirm-order-modal">
         <h2>Confirme seu pedido</h2>
-        <h4>Frango Yin Yang <span></span></h4>
-        <h4>Frango Yin Yang <span></span></h4>
-        <h4>Frango Yin Yang <span></span></h4>
+        <h4><span></span><span></span></h4>
+        <h4><span> </span><span></span></h4>
+        <h4><span></span><span></span></h4>
         <h3>Total: <span></span></h3>
 
         <button id="deal" data-test="confirm-order-btn">Tudo certo, pode pedir!</button>
         <button id="cancel" data-test="cancel-order-btn">Cancelar</button>
-    </div>  
+    </div>
 
     <script src="script.js"></script>
 

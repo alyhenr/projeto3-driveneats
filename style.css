@@ -99,14 +99,15 @@ header {
     justify-content: center;
 
     position: fixed;
-    width: 414px;
+    max-width: 414px;
+    width: 100%;
     height: 92px;
     left: 0;
     right: 0;
     bottom: 0;
     margin: auto;
 
-    background-color: #E5E5E5;
+    background-color: white;
 
     z-index: 10;
 }
@@ -200,7 +201,7 @@ header {
     background: #50D074;
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
     border-radius: 9px;
-    padding: 21px 35px;
+    padding: 21px 10px;
 }
 
 .confirmation-panel h2 {
@@ -217,7 +218,7 @@ header {
 .confirmation-panel h4 {
     width: 100%;
     display: flex;
-    justify-content: space-between;    
+    justify-content: space-between;
 
     font-family: 'Roboto';
     font-style: normal;
@@ -233,7 +234,7 @@ header {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    
+
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
@@ -252,10 +253,11 @@ header {
     width: 310px;
     height: 52px;
 
-    background: #FFFFFF;    
+    background: #FFFFFF;
 
     border-radius: 100px;
     border: none;
+    margin: 1px auto;
 
     font-family: 'Roboto';
     font-style: normal;
@@ -264,7 +266,7 @@ header {
     line-height: 26px;
     letter-spacing: 0.018em;
 
-    color: #50D074;    
+    color: #50D074;
 }
 
 #cancel {
@@ -285,4 +287,8 @@ header {
     letter-spacing: 0.018em;
 
     color: #FFFFFF;
+}
+
+.low-opacity {
+    opacity: 0.2;
 }
