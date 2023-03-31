@@ -9,21 +9,43 @@ let drink = 0;
 let dessert = 0;
 let total = 0;
 
+// Após as opções serem selecionadas e o botão de fechar pedido ser clicado:
 const orderConfirmation = (e) => {
+  // Desabilitando o botão de fechar pedido para que não seja possível clicar nele novamente
+  // enquanto se está na tela de confirmação. O botão é habilitado novamente se o usuário clicar
+  // em "cancelar", e estiver com as 3 opções selecionadas:
   e.currentTarget.disabled = true;
 
+  // Deixando o body do app com opacidade baixa quando a tela de confirmação é apresentada:
   document.querySelector(".container").style.opacity = 0.2;
 
-  const name = prompt("Qual seu nome?");
-  const adress = prompt("Qual seu endereço?");
+  // Armazenando o nome e endereço do usuário para a menssagem no whats:
+  let name = "";
+  let adress = "";
+  let condition = true;
 
+  do {
+    name = prompt("Qual seu nome?");
+    adress = prompt("Qual seu endereço?");
+
+    name === "" || name === null || adress === "" || adress === null
+      ? (condition = true)
+      : (condition = false);
+
+    if (condition)
+      alert(
+        "Digite seu nome e endereço nos campos correspondentes, por favor."
+      );
+  } while (condition);
+
+  // Apresentando o painel de confirmação:
   const confirmation = document.getElementById("confirmation");
   confirmation.classList.remove("not-visible");
   confirmation.classList.add("confirmation-panel");
 
+  // Adicionando o valor dos pedidos e o valor total no painel de confirmação:
   const pricesSelection = [meal, drink, dessert, total.toFixed(2)];
 
-  // Adicionando o valor dos pedidos e o valor total no painel de confirmação:
   for (let i = 0; i < confirmation.children.length - 3; i++) {
     confirmation.children[i + 1].getElementsByTagName("span")[0].textContent =
       pricesSelection[i].toString().replaceAll(".", ",");
@@ -56,39 +78,36 @@ const orderConfirmation = (e) => {
   });
 };
 
-// Função para alterar o estilo da opção selecionada e armazenar o preço da mesma:
+// Função para alterar o estilo (borda verde) da opção selecionada e armazenar o preço da mesma:
 const selectOption = (e) => {
-  const divSelecionada = document.getElementById(e.currentTarget.id);
-  const divPai = document.getElementById(e.currentTarget.id).parentElement;
+  // Capturando a div que receber o click:
+  const divSelecionada = e.currentTarget;
 
-  if (divPai.hasChildNodes()) {
-    for (let i = 0; i < [...divPai.children].length; i++) {
-      if (divPai.children[i].id === divSelecionada.id) {
-        divSelecionada.classList.add("selected");
+  // Verificando se alguma das div do mesmo menu de opões ja hávia sido selecionada e então
+  // removendo a seleção desta, para aplicar na nova selecionada:
+  const previouslySelected = document.querySelector(
+    `.${e.currentTarget.classList[0]}.selected`
+  );
 
-        // Fazendo o ion-icon de "ok" aparecer:
-        divSelecionada.children[2].classList.add("visible");
+  if (previouslySelected !== null)
+    previouslySelected.classList.remove("selected");
 
-        // Capturando o preço da opção selecionada (melhorando o commit final e elimando repetições de código):
-        const priceOption = (element) => {
-          return element
-            .getElementsByClassName("price")[0]
-            .textContent.replaceAll(",", ".");
-        };
+  // Por fim, aplicando a seleção na div clicada:
+  divSelecionada.classList.add("selected");
 
-        // Armazenando o preço da opção:
-        if (divSelecionada.id.includes("meal")) {
-          meal = +priceOption(divSelecionada);
-        } else if (divSelecionada.id.includes("drink")) {
-          drink = +priceOption(divSelecionada);
-        } else if (divSelecionada.id.includes("dessert")) {
-          dessert = +priceOption(divSelecionada);
-        }
-      } else {
-        divPai.children[i].classList.remove("selected");
-        divPai.children[i].children[2].classList.remove("visible");
-      }
-    }
+  // Armazenando o preço da opção selecionada para cada menu:
+  const priceOption = (element) => {
+    return element
+      .getElementsByClassName("price")[0]
+      .textContent.replaceAll(",", ".");
+  };
+
+  if (divSelecionada.classList[0].includes("meal")) {
+    meal = +priceOption(divSelecionada);
+  } else if (divSelecionada.classList[0].includes("drink")) {
+    drink = +priceOption(divSelecionada);
+  } else if (divSelecionada.classList[0].includes("dessert")) {
+    dessert = +priceOption(divSelecionada);
   }
 
   // Se as 3 opções forem selecionadas, o botão de fechar pedido é liberado:
@@ -107,23 +126,17 @@ const selectOption = (e) => {
 // estas automaticamente ganham um id única.
 
 for (let i = 0; i < divMeal.length; i++) {
-  divMeal.item(i).id = `meal-${i}`;
-
-  // Adicionando um event listener para click, em cada div:
+  // Adicionando um event listener para click, em cada div do menu de pratos:
   divMeal.item(i).addEventListener("click", (e) => selectOption(e));
 }
 
 for (let i = 0; i < divDrink.length; i++) {
-  divDrink.item(i).id = `drink-${i}`;
-
-  // Adicionando um event listener para click, em cada div:
+  // Adicionando um event listener para click, em cada div do menu de bebidas:
   divDrink.item(i).addEventListener("click", (e) => selectOption(e));
 }
 
 for (let i = 0; i < divDessert.length; i++) {
-  divDessert.item(i).id = `dessert-${i}`;
-
-  // Adicionando um event listener para click, em cada div:
+  // Adicionando um event listener para click, em cada div do menu de sobremesas:
   divDessert.item(i).addEventListener("click", (e) => selectOption(e));
 }
 
