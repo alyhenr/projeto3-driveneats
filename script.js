@@ -89,11 +89,18 @@ const selectOption = (e) => {
     `.${e.currentTarget.classList[0]}.selected`
   );
 
-  if (previouslySelected !== null)
+  if (previouslySelected !== null) {
     previouslySelected.classList.remove("selected");
+
+    // Removendo ion-icon de check:
+    previouslySelected.children[2].classList.remove("visible");
+  }
 
   // Por fim, aplicando a seleção na div clicada:
   divSelecionada.classList.add("selected");
+
+  // Adicionando ion-icon de check:
+  divSelecionada.children[2].classList.add("visible");
 
   // Armazenando o preço da opção selecionada para cada menu:
   const priceOption = (element) => {
